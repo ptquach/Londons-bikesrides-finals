@@ -1,53 +1,39 @@
-# Bike Share Data Analysis
+
+# London Bike Rides Data Analysis
 
 ## Overview
-This project analyzes bike share data across different years and integrates cost analysis for better financial insights. The SQL script extracts, transforms, and combines bike ride data from multiple years with cost data to calculate revenue and profit.
+This project involves analyzing bike ride data in London using various datasets, Jupyter notebooks, and visualization tools. The goal is to extract insights related to bike-sharing usage, seasonal trends, and financial performance.
 
-## SQL Query Breakdown
+## Files and Description
+1. **`london_merged.csv`** - Merged dataset containing bike ride data with relevant features.
+2. **`london_bikes_finals.xlsx`** - Final cleaned and processed dataset with additional computed metrics.
+3. **`London_bikes.ipynb`** - Jupyter Notebook containing data analysis, preprocessing, and visualization.
+4. **`London bikes rides finals.twb`** - Tableau Workbook for visual representation and dashboarding of bike ride trends.
 
-### 1. **Common Table Expression (CTE)**
-```sql
-WITH cte AS (
-    SELECT * FROM [dbo].[bike_share_yr_0]
-    UNION ALL
-    SELECT * FROM [dbo].[bike_share_yr_1]
-)
-```
-- The `cte` combines data from two years (`bike_share_yr_0` and `bike_share_yr_1`) using `UNION ALL`, allowing for seamless aggregation of historical bike ride data.
+## Data Fields
+The datasets contain various fields such as:
+- `timestamp`: Date and time of bike rides.
+- `season`: Seasonal classification (Winter, Spring, Summer, Fall).
+- `weather`: Weather conditions during the ride.
+- `humidity`, `wind_speed`: Environmental factors affecting bike usage.
+- `bike_count`: Number of bikes used at a given time.
+- `price`, `revenue`, `profit`: Financial metrics related to bike-sharing services.
 
-### 2. **Main Query**
-```sql
-SELECT dteday, season, a.yr, weekday, hr, rider_type, riders, price, [COGS],
-       riders * price AS revenue,
-       riders * price - [COGS] AS profit
-FROM cte AS a
-LEFT JOIN [dbo].[cost_table] AS b
-ON a.yr = b.yr;
-```
-- Selects relevant columns for analysis: `dteday`, `season`, `year`, `weekday`, `hour`, `rider_type`, `riders`, `price`, and `COGS`.
-- Calculates **revenue** (`riders * price`).
-- Computes **profit** (`revenue - COGS`).
-- Uses a `LEFT JOIN` to integrate cost data from `[cost_table]`, ensuring that all bike rides have corresponding cost data when available.
+## Steps to Use
+1. Load `london_merged.csv` or `london_bikes_finals.xlsx` into a data processing tool (Python, Excel, SQL, or Power BI).
+2. Open `London_bikes.ipynb` to perform data preprocessing, EDA (Exploratory Data Analysis), and visualization.
+3. Use `London bikes rides finals.twb` in Tableau to generate interactive dashboards.
 
-## Required Database Tables
-1. **bike_share_yr_0**
-2. **bike_share_yr_1**
-3. **cost_table**
+## Tools Used
+- **Python (Pandas, Matplotlib, Seaborn, Scikit-learn)** for data cleaning, analysis, and machine learning.
+- **Tableau** for data visualization and trend analysis.
+- **Excel** for basic data manipulation and validation.
+- **SQL** (if applicable) for querying and data integration.
 
-## Dependencies
-- SQL Server (or any compatible SQL database)
-- Proper indexing on `yr` in both `bike_share_yr_*` tables and `cost_table` for performance optimization.
-
-## Usage
-1. Load the `bike_share_yr_0` and `bike_share_yr_1` datasets into your database.
-2. Ensure `cost_table` is available and properly formatted.
-3. Execute the SQL script to extract insights.
-4. Analyze the output for revenue and profit trends.
-
-## Future Enhancements
-- Add more historical data to `bike_share_yr_*` tables.
-- Optimize indexing to improve query performance.
-- Develop a Power BI dashboard for visualizing trends.
+## Future Improvements
+- Incorporate machine learning models for demand forecasting.
+- Enhance data visualization in Tableau with advanced dashboards.
+- Integrate real-time data updates for live tracking of bike usage.
 
 ## Author
 **Phong Quach**
