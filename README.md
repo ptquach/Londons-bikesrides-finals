@@ -25,7 +25,7 @@ The datasets contain various fields such as:
 3. Use `London bikes rides finals.twb` in Tableau to generate interactive dashboards.
 
 ## Tools Used
-- **Python (Pandas, Matplotlib, Seaborn, Scikit-learn)** for data cleaning, analysis, and machine learning.
+- **Python (Pandas)** for data cleaning, analysis, and machine learning.
 - **Tableau** for data visualization and trend analysis.
 - **Excel** for basic data manipulation and validation.
 
