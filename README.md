@@ -28,7 +28,6 @@ The datasets contain various fields such as:
 - **Python (Pandas, Matplotlib, Seaborn, Scikit-learn)** for data cleaning, analysis, and machine learning.
 - **Tableau** for data visualization and trend analysis.
 - **Excel** for basic data manipulation and validation.
-- **SQL** (if applicable) for querying and data integration.
 
 ## Future Improvements
 - Incorporate machine learning models for demand forecasting.
